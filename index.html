@@ -141,6 +141,7 @@
       font-weight: 600;
       font-size: 0.8rem;
       transition: 0.2s;
+      cursor: pointer;
     }
     .resume-btn:hover {
       background: #6366f1;
@@ -389,12 +390,6 @@
       font-size: 1.2rem;
       line-height: 1;
     }
-    .pill .logo img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-    /* fallback emoji logos */
     .pill .logo[data-logo="react"] { color: #61DAFB; }
     .pill .logo[data-logo="redux"] { color: #764ABC; }
     .pill .logo[data-logo="firebase"] { color: #FFCA28; }
@@ -687,10 +682,10 @@
         <a href="https://github.com/MuhammadAbdullahhh" target="_blank" class="icon-btn">
           <span style="font-size:1.1rem;">🐙</span> GitHub
         </a>
-        <a href="#" class="icon-btn">
+        <a href="https://www.linkedin.com/in/muhammadabdullahhh" target="_blank" class="icon-btn">
           <span style="font-size:1.1rem;">🔗</span> LinkedIn
         </a>
-        <a href="#" class="resume-btn">Resume</a>
+        <a href="#" class="resume-btn" id="resumeBtn">Resume</a>
       </div>
     </div>
   </nav>
@@ -706,7 +701,7 @@
           <p class="desc">Building beautiful, high-performance web applications with modern JavaScript, React, and cloud tools.</p>
           <div class="hero-buttons">
             <a href="#contact" class="btn-primary">Contact Me</a>
-            <a href="#" class="btn-outline">Download Resume</a>
+            <a href="#" class="btn-outline" id="resumeBtn2">Download Resume</a>
           </div>
           <div class="stats">
             <div class="stat-item"><div class="num">3+</div><div class="label">Years Learning</div></div>
@@ -942,7 +937,8 @@
       if (window.scrollY > 50) nav.classList.add('scrolled');
       else nav.classList.remove('scrolled');
     });
-    // Skill bars animation on scroll (simple)
+
+    // Skill bars animation on scroll
     const fillBars = document.querySelectorAll('.fill');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -952,6 +948,22 @@
       });
     }, { threshold: 0.5 });
     fillBars.forEach(bar => observer.observe(bar));
+
+    // Resume button functionality
+    document.getElementById('resumeBtn').addEventListener('click', function(e) {
+      e.preventDefault();
+      // Replace with your actual resume PDF URL
+      const resumeUrl = 'https://drive.google.com/uc?export=download&id=YOUR_RESUME_FILE_ID';
+      window.open(resumeUrl, '_blank');
+      // If you have a local PDF file, you can use:
+      // window.location.href = 'resume.pdf';
+    });
+
+    document.getElementById('resumeBtn2').addEventListener('click', function(e) {
+      e.preventDefault();
+      const resumeUrl = 'https://drive.google.com/uc?export=download&id=YOUR_RESUME_FILE_ID';
+      window.open(resumeUrl, '_blank');
+    });
   </script>
 </body>
 </html>
